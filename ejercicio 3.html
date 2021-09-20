@@ -1,0 +1,49 @@
+<canvas id='tablero' width=600 height=600>
+<script>
+
+
+function triangulo(cd,colorBorde,colorRelleno,grosor){
+   
+  ctx.strokeStyle = colorBorde;
+  ctx.fillStyle = colorRelleno;
+  ctx.lineWidtth = grosor;
+
+  ctx.beginPath();
+  ctx.moveTo(cd[0],cd[1]);
+for (var i=2; i < cd.length; i+=2)
+  ctx.lineTo(cd[i],cd[i+1]);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.fill();
+  
+ }
+
+function recorte(arr){
+
+ctx.beginPath();
+  ctx.moveTo(arr[0],arr[1]);
+  for (var i=2; i < arr.length; i+=2)
+  ctx.lineTo(arr[i],arr[i+1]);
+
+  ctx.clip()
+}
+  var canvas = document.getElementById('tablero');
+  var ctx = canvas.getContext('2d');
+  var arr1 = [3,243,21,143,420,273];
+
+triangulo([355,12,355,308,316,308,316,12],'rgba(34,177,76)','rgba(34,177,76)')//rectangulo verde
+
+triangulo([17,234,363,234,363,276,17,276],'rgba(255,242,0)','rgba(0,162,232)')//rectangulo azul
+
+triangulo([42,14,85,14,85,305,42,305],'rgba(255,242,0)','rgba(255,242,0)')//rectangulo amarillo
+
+triangulo([122,8,392,166,132,300],'rgba(255,127,39)','rgba(195,195,195)')//triangulo
+
+recorte([16,29,370,29,370,75,16,75])
+
+triangulo([16,29,370,29,370,75,16,75],'rgba(255,127,39)','rgba(255,127,39)')//rectangulo naranja
+
+triangulo([355,12,355,308,316,308,316,12],'rgba(34,177,76)','rgba(34,177,76)')//rectangulo verde
+
+
+</script>
